@@ -19,7 +19,7 @@ export class CheckBuyingVegsService {
         const response = await this.httpService
           .get('https://www.wenjuan.com/s/UZBZJvaVTgF/?is=qrcode')
           .toPromise();
-        if (response.data.includes('该表单已停止收集')) {
+        if (!response.data.includes('该表单已停止收集')) {
           const mail = {
             to: this.configService.get('SEND_GRID_TO_EMAIL'),
             subject: 'Order now!',
