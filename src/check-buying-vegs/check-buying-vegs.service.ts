@@ -14,7 +14,7 @@ export class CheckBuyingVegsService {
 
   @Cron('0/15 * * * * *')
   async check() {
-    if (this.configService.get('ON')) {
+    if (this.configService.get('ON') == 1) {
       try {
         const response = await this.httpService
           .get('https://www.wenjuan.com/s/UZBZJvaVTgF/?is=qrcode')
